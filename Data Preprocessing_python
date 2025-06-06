@@ -1,0 +1,10 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load and parse data
+df = pd.read_csv('weather.csv', parse_dates=['Date'])
+df.set_index('Date', inplace=True)
+
+# Visualize
+df['Temperature'].plot(figsize=(14, 6), title='Temperature Over Time')
+plt.show()
