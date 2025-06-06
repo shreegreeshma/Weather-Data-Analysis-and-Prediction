@@ -1,0 +1,10 @@
+from statsmodels.tsa.arima.model import ARIMA
+
+model = ARIMA(df['Temperature'], order=(5, 1, 0))
+model_fit = model.fit()
+forecast = model_fit.forecast(steps=30)
+
+plt.plot(df.index, df['Temperature'], label='Historical')
+plt.plot(pd.date_range(df.index[-1], periods=30, freq='D'), forecast, label='Forecast', linestyle='--')
+plt.legend()
+plt.show()
